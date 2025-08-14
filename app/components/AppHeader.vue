@@ -23,8 +23,7 @@
         <span class="opacity-10">|</span>
         <StudySwitcher />
         <span class="opacity-10">|</span>
-        <span class="opacity-50">Interval:</span>
-        <USelect v-model="interval" :items="intervals" class="min-w-[75px]"/>
+        <IntervalSwitcher />
       </div>
     </div>
 

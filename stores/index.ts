@@ -31,12 +31,31 @@ export const useMainStore = defineStore('main', () => {
     if (v) study.value = v
   }
 
+  const intervalOptions = [
+    { label: '1m', value: '1' },
+    { label: '5m', value: '5' },
+    { label: '15m', value: '15' },
+    { label: '1H', value: '60' },
+    { label: '4H', value: '240' },
+    { label: 'D', value: '1D' },
+  ]
+
+  const interval = useCookie('interval', { default: () => intervalOptions[0] })
+
+  function setInterval(value: string) {
+    const v = intervalOptions.find(x => x.value === value)
+    if (v) interval.value = v
+  }
+
   return {
     gridOptions,
     grid,
     studyOptions,
     study,
+    intervalOptions,
+    interval,
     setGrid,
-    setStudy
+    setStudy,
+    setInterval
   }
 })
