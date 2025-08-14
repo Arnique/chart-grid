@@ -21,8 +21,7 @@
       <div class="flex h-full justify-center items-center gap-2">
         <GridSwitcher />
         <span class="opacity-10">|</span>
-        <UButton size="sm" color="neutral" variant="outline">VWAP</UButton>
-        <UButton size="sm" color="primary" variant="outline">SMA</UButton>
+        <StudySwitcher />
         <span class="opacity-10">|</span>
         <span class="opacity-50">Interval:</span>
         <USelect v-model="interval" :items="intervals" class="min-w-[75px]"/>

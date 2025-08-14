@@ -15,9 +15,28 @@ export const useMainStore = defineStore('main', () => {
     grid.value = gridOptions[i]
   }
 
+
+  const studyOptions = [
+    { label: 'VWAP', value: 'vwap', data: 'VWAP@tv-basicstudies' },
+    { label: 'SMA 200', value: 'sma200', data: { id: "MASimple@tv-basicstudies", inputs: { length: 200 } } },
+    { label: 'SMA 50', value: 'sma50', data: { id: "MASimple@tv-basicstudies", inputs: { length: 50 } } },
+  ]
+
+  const study = useCookie('study', {
+    default: () => studyOptions[0]
+  })
+
+  function setStudy(value: string) {
+    const v = studyOptions.find(x => x.value === value)
+    if (v) study.value = v
+  }
+
   return {
     gridOptions,
     grid,
-    setGrid
+    studyOptions,
+    study,
+    setGrid,
+    setStudy
   }
 })
