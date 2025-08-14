@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+:root {
+  --header-h: 50px;
+}
+
+button, [type="button"] {
+  cursor: pointer;
+}
