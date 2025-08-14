@@ -1,7 +1,21 @@
 <template>
   <div class="flex items-center gap-2">
-    <UButton size="sm" color="primary" variant="outline">1x4</UButton>
-    <UButton size="sm" color="neutral" variant="outline">4x1</UButton>
-    <UButton size="sm" color="neutral" variant="outline">2x2</UButton>
+    <UButton
+      v-for="(v,i) in gridOptions"
+      :key="v.value"
+      :color="grid.value == v.value ? 'primary' : 'neutral'"
+      @click="setGrid(i)"
+      variant="outline"
+      size="sm"
+    >
+      {{ v.label }}
+    </UButton>
   </div>
 </template>
+
+<script setup>
+  import { storeToRefs } from 'pinia';
+  const mainStore = useMainStore()
+  const { gridOptions, setGrid } = mainStore
+  const {grid } = storeToRefs(mainStore)
+</script>
