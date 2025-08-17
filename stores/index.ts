@@ -47,6 +47,15 @@ export const useMainStore = defineStore('main', () => {
     if (v) interval.value = v
   }
 
+  const symbols = useCookie('symbols', {
+    default: () => [
+      'BYBIT:BTCUSDT.P',
+      'BYBIT:ETHUSDT.P',
+      'BYBIT:SOLUSDT.P',
+      'BYBIT:BNBUSDT.P',
+    ]
+  })
+
   return {
     gridOptions,
     grid,
@@ -54,6 +63,7 @@ export const useMainStore = defineStore('main', () => {
     study,
     intervalOptions,
     interval,
+    symbols,
     setGrid,
     setStudy,
     setInterval
