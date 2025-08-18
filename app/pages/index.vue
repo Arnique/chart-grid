@@ -7,7 +7,7 @@
   >
     <ChartPanel
       v-for="(v, i) in symbolsToShow"
-      :key="v"
+      :key="key(v)"
       :symbol="v"
       :index="i"
       draggable="true"
@@ -28,8 +28,12 @@
   import { storeToRefs } from 'pinia';
   const mainStore = useMainStore()
   const { setSymbols } = mainStore
-  const { grid, symbols } = storeToRefs(mainStore)
+  const { grid, symbols, study, interval } = storeToRefs(mainStore)
   const symbolsToShow = computed(() => symbols.value.slice(0, grid.value.total))
+
+  function key(symbol) {
+    return `${symbol}_${study.value.value}_${interval.value.value}`
+  }
 
   useHead({
     title: 'Multiple charts in 1 screen!'

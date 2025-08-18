@@ -35,9 +35,13 @@ export const useMainStore = defineStore('main', () => {
     { label: '1m', value: '1' },
     { label: '5m', value: '5' },
     { label: '15m', value: '15' },
-    { label: '1H', value: '60' },
-    { label: '4H', value: '240' },
-    { label: 'D', value: '1D' },
+    { label: '30m', value: '30' },
+    { label: '1h', value: '60' },
+    { label: '2h', value: '120' },
+    { label: '3h', value: '180' },
+    { label: '4h', value: '240' },
+    { label: '1d', value: 'D' },
+    { label: '1w', value: 'W' },
   ]
 
   const interval = useCookie('interval', { default: () => intervalOptions[0] })
