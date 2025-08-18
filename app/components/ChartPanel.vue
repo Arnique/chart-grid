@@ -6,7 +6,7 @@
       <UInput v-model="userSymbol" placeholder="Enter a valid symbol" size="sm" class="ml-auto"/>
       <UButton size="sm" variant="outline" @click="addSymbol" :disabled="!userSymbol" class="disabled:opacity-30 disabled:cursor-not-allowed">Change</UButton>
     </template>
-    <Chart v-if="symbol" :options="options" :class="[name , 'h-full']" />
+    <Chart v-if="symbol" :key="key" :options="options" :class="[name , 'h-full']" />
   </UCard>
 </template>
 
@@ -14,7 +14,8 @@
   import { storeToRefs } from 'pinia';
   const mainStore = useMainStore()
   const { setSymbols } = mainStore
-  const { symbols } = storeToRefs(mainStore)
+  const { symbols, study, interval } = storeToRefs(mainStore)
+  const key = computed(() => `${props.symbol}_${study.value.value}_${interval.value.value}`)
 
   const userSymbol = ref('')
   const props = defineProps({
@@ -34,7 +35,9 @@
     hide_volume: true,
     hide_side_toolbar: true,
     hide_top_toolbar: true,
-    allow_symbol_change: true
+    allow_symbol_change: true,
+    studies: [study.value.data],
+    interval: interval.value.value
   })
 
   const name = computed(() => {
