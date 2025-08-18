@@ -15,7 +15,8 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
-    'nuxt-tradingview'
+    'nuxt-tradingview',
+    '@vueuse/nuxt'
   ],
   pinia: {
     storesDirs: ['./stores/**']

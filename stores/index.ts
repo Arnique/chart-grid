@@ -56,6 +56,10 @@ export const useMainStore = defineStore('main', () => {
     ]
   })
 
+  function setSymbols(list = []) {
+    symbols.value = list
+  }
+
   return {
     gridOptions,
     grid,
@@ -64,6 +68,7 @@ export const useMainStore = defineStore('main', () => {
     intervalOptions,
     interval,
     symbols,
+    setSymbols,
     setGrid,
     setStudy,
     setInterval
