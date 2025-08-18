@@ -53,6 +53,8 @@ export const useMainStore = defineStore('main', () => {
       'BYBIT:ETHUSDT.P',
       'BYBIT:SOLUSDT.P',
       'BYBIT:BNBUSDT.P',
+      'BYBIT:XRPUSDT.P',
+      'BYBIT:ADAUSDT.P',
     ]
   })
 

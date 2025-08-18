@@ -6,7 +6,7 @@
     :class="[grid.classes]"
   >
     <ChartPanel
-      v-for="(v, i) in symbols"
+      v-for="(v, i) in symbolsToShow"
       :key="v"
       :symbol="v"
       :index="i"
@@ -29,6 +29,7 @@
   const mainStore = useMainStore()
   const { setSymbols } = mainStore
   const { grid, symbols } = storeToRefs(mainStore)
+  const symbolsToShow = computed(() => symbols.value.slice(0, grid.value.total))
 
   useHead({
     title: 'Multiple charts in 1 screen!'
