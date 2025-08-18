@@ -3,12 +3,20 @@
     <template #header>
       <UIcon name="octicon:grabber-16" class="cursor-point"/>
       <span class="opacity-50">{{ symbol }}</span>
+      <UInput v-model="userSymbol" placeholder="Enter a valid symbol" size="sm" class="ml-auto"/>
+      <UButton size="sm" variant="outline" @click="addSymbol" :disabled="!userSymbol" class="disabled:opacity-30 disabled:cursor-not-allowed">Change</UButton>
     </template>
     <Chart v-if="symbol" :options="options" :class="[name , 'h-full']" />
   </UCard>
 </template>
 
 <script setup>
+  import { storeToRefs } from 'pinia';
+  const mainStore = useMainStore()
+  const { setSymbols } = mainStore
+  const { symbols } = storeToRefs(mainStore)
+
+  const userSymbol = ref('')
   const props = defineProps({
     symbol: {
       default: 'BYBIT:BTCUSDT.P'
@@ -35,4 +43,10 @@
     s = s.replace('.', '_')
     return s
   })
+
+  function addSymbol() {
+    const arr = [...symbols.value]
+    arr[props.index] = userSymbol.value
+    setSymbols(arr)
+  }
 </script>
