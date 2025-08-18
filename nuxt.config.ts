@@ -14,6 +14,14 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/ui',
     '@pinia/nuxt',
-    '@nuxtjs/color-mode'
+    '@nuxtjs/color-mode',
+    'nuxt-tradingview',
+    '@vueuse/nuxt'
   ],
+  pinia: {
+    storesDirs: ['./stores/**']
+  },
+  tradingview: {
+    importOnly: ['Chart'] 
+  }
 })

@@ -19,15 +19,11 @@
 
     <div class="flex-1 h-full">
       <div class="flex h-full justify-center items-center gap-2">
-        <UButton size="sm" color="primary" variant="outline">1x4</UButton>
-        <UButton size="sm" color="neutral" variant="outline">4x1</UButton>
-        <UButton size="sm" color="neutral" variant="outline">2x2</UButton>
+        <GridSwitcher />
         <span class="opacity-10">|</span>
-        <UButton size="sm" color="neutral" variant="outline">VWAP</UButton>
-        <UButton size="sm" color="primary" variant="outline">SMA</UButton>
+        <StudySwitcher />
         <span class="opacity-10">|</span>
-        <span class="opacity-50">Interval:</span>
-        <USelect v-model="interval" :items="intervals" class="min-w-[75px]"/>
+        <IntervalSwitcher />
       </div>
     </div>
 
