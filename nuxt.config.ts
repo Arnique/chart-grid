@@ -23,5 +23,5 @@ export default defineNuxtConfig({
   },
   tradingview: {
     importOnly: ['Chart'] 
-  }
+  },
 })

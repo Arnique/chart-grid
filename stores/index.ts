@@ -62,6 +62,22 @@ export const useMainStore = defineStore('main', () => {
     symbols.value = list
   }
 
+  function resetSymbols() {
+    symbols.value = [
+      'BYBIT:BTCUSDT.P',
+      'BYBIT:ETHUSDT.P',
+      'BYBIT:SOLUSDT.P',
+      'BYBIT:BNBUSDT.P',
+      'BYBIT:XRPUSDT.P',
+      'BYBIT:ADAUSDT.P',
+    ]
+  }
+
+  function updateSymbol(index: number, symbol: string) {
+    if (symbols.value.includes(symbol)) throw new Error(`Symbol ${symbol} already exists!`)
+    symbols.value[index] = symbol
+  }
+
   return {
     gridOptions,
     grid,
@@ -73,6 +89,8 @@ export const useMainStore = defineStore('main', () => {
     setSymbols,
     setGrid,
     setStudy,
-    setInterval
+    setInterval,
+    resetSymbols,
+    updateSymbol
   }
 })

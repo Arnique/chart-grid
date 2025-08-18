@@ -12,9 +12,10 @@
 
 <script setup>
   import { storeToRefs } from 'pinia';
+  const toast = useToast()
   const mainStore = useMainStore()
-  const { setSymbols } = mainStore
-  const { symbols, study, interval } = storeToRefs(mainStore)
+  const { updateSymbol } = mainStore
+  const { study, interval } = storeToRefs(mainStore)
   const key = computed(() => `${props.symbol}_${study.value.value}_${interval.value.value}`)
 
   const userSymbol = ref('')
@@ -48,8 +49,16 @@
   })
 
   function addSymbol() {
-    const arr = [...symbols.value]
-    arr[props.index] = userSymbol.value
-    setSymbols(arr)
+    try {
+      updateSymbol(props.index, userSymbol.value)
+    } catch (e) {
+      toast.add({
+        title: 'Error updating symbol!',
+        description: e.message,
+        color: 'error',
+        progress: false,
+      })
+    }
+
   }
 </script>
