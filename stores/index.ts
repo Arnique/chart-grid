@@ -8,7 +8,7 @@ export const useMainStore = defineStore('main', () => {
   ]
 
   const grid = useCookie('grid', {
-    default: () => gridOptions[0]
+    default: () => gridOptions[1]
   })
 
   function setGrid(i: number) {

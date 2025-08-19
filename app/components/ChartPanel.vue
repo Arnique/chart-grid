@@ -4,7 +4,7 @@
       <UIcon name="octicon:grabber-16" class="cursor-point"/>
       <span class="opacity-50">{{ symbol }}</span>
       <span>{{ key }}</span>
-      <UInput v-model="userSymbol" placeholder="Enter a valid symbol" size="sm" class="ml-auto"/>
+      <UInput v-model="userSymbol" placeholder="Enter a valid symbol" size="sm" class="ml-auto" @keyup.enter="addSymbol"/>
       <UButton size="sm" variant="outline" @click="addSymbol" :disabled="!userSymbol" class="disabled:opacity-30 disabled:cursor-not-allowed">Change</UButton>
     </template>
     <Chart v-if="symbol" :options="options" :class="[name , 'h-full']" />
