@@ -79,7 +79,9 @@ export const useMainStore = defineStore('main', () => {
 
   function updateSymbol(index: number, symbol: string) {
     if (symbols.value.includes(symbol)) throw new Error(`Symbol ${symbol} already exists!`)
-    symbols.value[index] = symbol
+    const arr = [...symbols.value]
+    arr[index] = symbol
+    symbols.value = arr
   }
 
   return {
