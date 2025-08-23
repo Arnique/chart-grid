@@ -24,4 +24,7 @@ export default defineNuxtConfig({
   tradingview: {
     importOnly: ['Chart'] 
   },
+  experimental: {
+    checkOutdatedBuildInterval: 1000 * 60 * 10
+  }
 })
